@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import CourseCard from './CourseCard';
 import { useNavigation } from '../../contexts/NavigationContext';
+import { API_ENDPOINTS } from '../../config/api';
+
 
 const CourseList = () => {
   const [courses, setCourses] = useState([]);
@@ -15,7 +17,7 @@ const CourseList = () => {
 
   const fetchCourses = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/v1/course/preview');
+      const response = await axios.get(API_ENDPOINTS.course.preview);
       setCourses(response.data.courses || []);
     } catch (error) {
       setError('Failed to fetch courses');

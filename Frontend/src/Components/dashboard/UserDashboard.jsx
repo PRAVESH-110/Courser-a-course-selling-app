@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigation } from '../../contexts/NavigationContext';
+import { API_ENDPOINTS } from '../../config/api';
 
 const UserDashboard = () => {
   const [purchases, setPurchases] = useState([]);
@@ -18,7 +19,7 @@ const UserDashboard = () => {
     if (!token) return;
 
     try {
-      const response = await axios.get('http://localhost:3000/api/v1/user/purchases', {
+      const response = await axios.get(API_ENDPOINTS.user.purchases, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
 

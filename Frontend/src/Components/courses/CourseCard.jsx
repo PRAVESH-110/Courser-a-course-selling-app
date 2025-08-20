@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import axios from 'axios';
 import Popup from '../common/Popup';
+import { API_ENDPOINTS } from '../../config/api';
+
 
 const CourseCard = ({ course }) => {
   const [purchasing, setPurchasing] = useState(false);
@@ -28,7 +30,7 @@ const CourseCard = ({ course }) => {
 
     setPurchasing(true);
     try {
-      await axios.post('http://localhost:3000/api/v1/course/purchase', 
+      await axios.post(API_ENDPOINTS.course.purchase, 
         { courseId: course._id },
         { 
           headers: { 

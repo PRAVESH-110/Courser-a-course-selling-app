@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import Popup from '../common/Popup';
+import { API_ENDPOINTS } from '../../config/api';
 
 const UserSignin = ({ onSigninSuccess, onSwitchToSignup }) => {
   const [formData, setFormData] = useState({
@@ -24,7 +25,7 @@ const UserSignin = ({ onSigninSuccess, onSwitchToSignup }) => {
     setError('');
 
     try {
-      const response = await axios.post('http://localhost:3000/api/v1/user/signin', formData);
+      const response = await axios.post(API_ENDPOINTS.user.signin, formData);
       setPopup({
         isVisible: true,
         message: 'Sign in successful!',

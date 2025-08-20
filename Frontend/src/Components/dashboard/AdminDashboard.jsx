@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Popup from '../common/Popup';
 import { useNavigation } from '../../contexts/NavigationContext';
+import { API_ENDPOINTS } from '../../config/api';
 
 const AdminDashboard = () => {
   const [courses, setCourses] = useState([]);
@@ -36,7 +37,7 @@ const AdminDashboard = () => {
     if (!token) return;
 
     try {
-      const response = await axios.get('http://localhost:3000/api/v1/admin/course/bulk', {
+      const response = await axios.get(API_ENDPOINTS.admin.courses, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       setCourses(response.data.courses || []);
@@ -54,7 +55,7 @@ const AdminDashboard = () => {
     if (!token) return;
 
     try {
-      await axios.post('http://localhost:3000/api/v1/admin/createcourse', formData, {
+      await axios.post(API_ENDPOINTS.admin.createCourse , formData, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       setPopup({
@@ -88,7 +89,7 @@ const AdminDashboard = () => {
     if (!token) return;
 
     try {
-      await axios.put('http://localhost:3000/api/v1/admin/editcourse', {
+      await axios.put(API_ENDPOINTS.admin.editCourse, {
         ...formData,
         courseId: editingCourse._id
       }, {
