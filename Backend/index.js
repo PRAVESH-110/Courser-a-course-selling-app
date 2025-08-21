@@ -10,8 +10,16 @@ const {adminRouter}=require("./routes/admin")
 const app=express();
 
 // CORS middleware - allow requests from your React frontend
+const allowedOrigins = ['http://localhost:5173', 'https://courser-a-course-selling-app-actual.onrender.com'];
+
 app.use(cors({
-  origin: 'http://localhost:5173', // Your React app URL
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true
 }));
 
