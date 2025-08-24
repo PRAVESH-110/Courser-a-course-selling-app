@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { NavigationProvider, useNavigation } from './contexts/NavigationContext';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 import Navbar from './Components/common/Navbar';
 import Footer from './Components/common/Footer';
 import LandingPage from './Components/LandingPage';
@@ -252,9 +253,11 @@ const AppContent = () => {
 /* ----------------- APP ----------------- */
 function App() {
   return (
-    <NavigationProvider>
-      <AppContent />
-    </NavigationProvider>
+    <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID || ''}>
+      <NavigationProvider>
+        <AppContent />
+      </NavigationProvider>
+    </GoogleOAuthProvider>
   );
 }
 

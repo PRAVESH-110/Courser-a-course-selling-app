@@ -6,12 +6,21 @@ const cors = require('cors');
 const {userRouter}=require("./routes/user")
 const {courseRouter}=require("./routes/course")
 const {adminRouter}=require("./routes/admin")
+const {googleAuthRouter}=require("./routes/googleAuth")
 
 const app=express();
 
 // CORS middleware - allow requests from your React frontend
+const allowedOrigins = ['http://localhost:5173', 'https://courser-a-course-selling-app-actual.onrender.com'];
+
 app.use(cors({
-  origin: 'http://localhost:5173', // Your React app URL
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true
 }));
 
@@ -21,6 +30,7 @@ app.use(express.json());
 app.use("/api/v1/user",userRouter);
 app.use("/api/v1/admin",adminRouter);  
 app.use("/api/v1/course",courseRouter);
+app.use("/api/v1/auth", googleAuthRouter);
 
 async function dbconnect() {
     try {

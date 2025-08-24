@@ -10,7 +10,9 @@ const userSchema = new Schema({
     email: {type: String, unique: true},
     password: String,
     firstName: String,
-    lastName: String
+    lastName: String,
+    googleId: {type: String, unique: true, sparse: true}, // For Google authentication
+    authMethod: {type: String, enum: ['local', 'google'], default: 'local'} // Track authentication method
 });
 const adminSchema = new Schema({
     email: {type: String, unique: true},

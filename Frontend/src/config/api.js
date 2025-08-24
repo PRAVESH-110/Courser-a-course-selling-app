@@ -19,5 +19,8 @@ export const API_ENDPOINTS = {
   course: {
     preview: `${API_BASE_URL}/api/v1/course/preview`,
     purchase: `${API_BASE_URL}/api/v1/course/purchase`
+  },
+  auth: {
+    google: `${API_BASE_URL}/api/v1/auth/google`
   }
 };

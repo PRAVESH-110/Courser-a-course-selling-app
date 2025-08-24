@@ -480,6 +480,16 @@ footer {
     transparent 60%
   );
   background-repeat: no-repeat;
-  background-size: 150% 150%;
-  opacity: 1.5;
+  background-size: 200% 200%;
+  opacity: 0.8;
+  animation: rippleMove 8s ease-in-out infinite alternate;
+}
+
+@keyframes rippleMove {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
 }
