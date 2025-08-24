@@ -2,25 +2,28 @@ This is a full-stack web application built with:
 
 React (frontend) → Provides client-side routing & UI.
 
-Node.js + Express (backend) → Handles APIs, authentication, and database operations.
+Node.js + Express (backend) → Handles APIs, authentication, and database operations. + MongoDB (database)
 
 Deployment → Both frontend & backend are hosted on Render for easy scalability and automatic SSL.
 
-🛠️ Tech Stack
-Frontend
+🛠️ Tech Stack:
 
-⚛️ React (with React Router DOM for routing)
+Frontend:
 
-🎨 TailwindCSS / CSS (customizable)
+⚛️ React + (React Router DOM)
+
+🎨 TailwindCSS / (customizable)
+    GSAP library for animations
 
 🌍 Hosted on Render (Static Site Hosting)
 
-Backend
+
+Backend:
 
 🟢 Node.js + Express
 
-🗄️ Database (MongoDB / PostgreSQL / MySQL → depending on your setup)
+🗄️ Database : MongoDB
 
-🔐 Authentication (JWT or session-based)
+🔐 Authentication (JWT or session-based) + Bcrypt (for hashing) + zod validation + google OAuth for google authentication
 
 🌍 Hosted on Render (Web Service)
